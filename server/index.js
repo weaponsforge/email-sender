@@ -33,6 +33,13 @@ app.post('/send', async ({
     })
 })
 
+app.get('/getenv', (req, res) => {
+  const dogBreed = process.env.DOG_BREED
+  res.status(200).send({
+    configvar: dogBreed,
+  })
+})
+
 app.listen(PORT, () => {
   console.log(`listening on port http://localhost:${PORT}`)
 })
