@@ -8,10 +8,22 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+      HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+      HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
+      HEROKU_APP: ${{ secrets.HEROKU_APP }}    
+
     steps:
-      - uses: actions/checkout@v1
-      - name: Deploy
-        env:
-          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-          HEROKU_APP: 'weaponsforge-emailsender'
-        run: git push https://heroku:${{ secrets.HEROKU_API_TOKEN }}@git.heroku.com/weaponsforge-emailsender.git origin/master:master
+      - name: Checkout
+        uses: actions/checkout@v1  
+      - run: |+
+        cat >~/.netrc <<EOF
+        machine api.heroku.com
+          login $HEROKU_EMAIL
+          password $HEROKU_API_KEY
+        machine git.heroku.com
+          login $HEROKU_EMAIL
+          password $HEROKU_API_KEY
+        EOF
+      - run: heroku git:remote -a $(basename $GITHUB_REPOSITORY)
+      - run: git push heroku HEAD:refs/heads/master
