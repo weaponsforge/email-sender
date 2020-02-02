@@ -11,7 +11,8 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Deploy
+        uses: actions/heroku@1.0.0
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-          HEROKU_APP_NAME: 'weaponsforge-emailsender'
-        run: git push -f https://heroku:${{ secrets.HEROKU_API_TOKEN }}@git.heroku.com/${{ secrets.HEROKU_APP_STAGING }}.git origin/master:master
+          HEROKU_APP: 'weaponsforge-emailsender'
+        run: git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git origin/master:master
