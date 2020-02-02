@@ -6,13 +6,6 @@ on:
       - master
 
 jobs:
-  checkout:
-    name: CHeckout
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v1
-
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
@@ -21,7 +14,8 @@ jobs:
       HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
       HEROKU_APP: ${{ secrets.HEROKU_APP }}
     steps:
-      - name: Deploy to Heroku
+      - name: Checkout and Deploy
+        uses: actions/checkout@v1  
       - run: |+
           cat >~/.netrc <<EOF
           machine api.heroku.com
@@ -32,6 +26,4 @@ jobs:
             password $HEROKU_API_KEY
           EOF
       - run: heroku git:remote -a $HEROKU_APP
-      - run: git push heroku HEAD:refs/heads/master      
-
-
+      - run: git push heroku HEAD:refs/heads/master
