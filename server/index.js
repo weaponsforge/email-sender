@@ -1,4 +1,4 @@
-// require('dotenv').config()
+require('dotenv').config()
 const express = require('express')
 const sendEmail = require('./sendemail')
 const PORT = process.env.PORT || 3000
