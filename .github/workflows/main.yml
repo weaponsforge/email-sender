@@ -11,7 +11,8 @@ jobs:
     env:
       HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
       HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
-      HEROKU_APP: ${{ secrets.HEROKU_APP }}    
+      HEROKU_APP: ${{ secrets.HEROKU_APP }}
+      GITHUB_REPOSITORY: ${{ secrets.GITHUB_REPOSITORY }}
 
     steps:
       - name: Checkout
@@ -25,5 +26,5 @@ jobs:
             login $HEROKU_EMAIL
             password $HEROKU_API_KEY
           EOF
-      - run: heroku git:remote -a $(basename $GITHUB_REPOSITORY)
+      - run: heroku git:remote -a $HEROKU_APP
       - run: git push heroku HEAD:refs/heads/master
