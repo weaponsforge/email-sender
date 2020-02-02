@@ -1,13 +1,21 @@
 require('dotenv').config()
 const express = require('express')
 const sendEmail = require('./sendemail')
+const rateLimit = require('express-rate-limit')
 const PORT = process.env.PORT || 3000
 const path = require('path')
 const app = express()
 
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 5, // limit each IP to 5 requests per windowMs
+  message: 'Too many requests from this IP. Please try again after 15 minutes.'
+})
+
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static(path.join(__dirname, '..', '/public')))
+app.use('/send', limiter)
 
 app.post('/send', async ({
   body: {
@@ -22,22 +30,14 @@ app.post('/send', async ({
       subject,
       text: message,
     }, (error) => {
-      let msgObj = { message: 'Email sent' }
+      let msgObj = 'Email sent'
       let responseCode = 200
       if (error) {
-        msgObj.message = 'Error sending email.'
-        msgObj.details = error.toString()
         responseCode = 400
+        msgObj = error.toString()
       }
       res.status(responseCode).send(msgObj)
     })
-})
-
-app.get('/getenv', (req, res) => {
-  const dogBreed = process.env.DOG_BREED
-  res.status(200).send({
-    configvar: dogBreed,
-  })
 })
 
 app.listen(PORT, () => {

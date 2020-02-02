@@ -20,16 +20,12 @@ const Form = function() {
     console.log(form)
     axios.post('/send', form)
       .then(({ data }) => {
-        console.log('done')
-        console.log(data)
         setSending(false)
         alert('Email sent.')
       })
       .catch(error => {
-        console.log('error!')
-        console.log(error)
         setSending(false)
-        alert('Error sending email')
+        alert(error.response.data)
       })
   }
 
