@@ -14,9 +14,10 @@
 
 ### Content
 
-- [**Installation**]()
-- [**Usage**]()
-- [**Google Gmail, SMTP and OAuth2 Setup**]()
+- [**Installation**](#installation)
+- [**Usage**](#usage)
+- [**Google Gmail, SMTP and OAuth2 Setup**](#google-gmail-smtp-and-oauth2-setup)
+- [**References**](#references)
 
 
 ## Installation
@@ -31,14 +32,14 @@
 
 4. Source out the `.env.example` file to a `.env` file. Fill in the information with *your own* Google account credentials:
 	- **EMAIL, CLIENT_USER**: your google email that you've configure for SMTP and OAuth2
-		- read on [**Google Gmail, SMTP and OAuth2 Setup**]() section for more information
+		- read on [**Google Gmail, SMTP and OAuth2 Setup**](#google-gmail-smtp-and-oauth2-setup) section for more information
 	- **CLIENT_ID**: Google Developer Project ID associated with your email
-		- read on [**Google Gmail, SMTP and OAuth2 Setup, #3 - #4**]() section for more information on how to obtain this
+		- read on [**Google Gmail, SMTP and OAuth2 Setup, #3 - #4**](#google-gmail-smtp-and-oauth2-setup) section for more information on how to obtain this
 	- **CLIENT_SECRET**: Client secret for the Google Developer Project CLIENT\_ID
 	- **REDIRECT_URL**: *https://developers.google.com/oauthplayground*
 	- **REFRESH_TOKEN**:
 		- The initial (or any) refresh token obtained from [oauthplayground](https://developers.google.com/oauthplayground)
-		- read on [**Google Gmail, SMTP and OAuth Setup2, #5**]() section for more information on how to obtain this
+		- read on [**Google Gmail, SMTP and OAuth Setup2, #5**](#google-gmail-smtp-and-oauth2-setup) section for more information on how to obtain this
 
 
 ## Usage
@@ -96,6 +97,14 @@
     - Go to "Step 2: Exchange authorization code for tokens" from the side bar
        - press the **Exchange authorization code for tokens** button
     - Copy the **Refresh Token**
+
+
+## References
+
+[[1]](https://medium.com/@nickroach_50526/sending-emails-with-node-js-using-smtp-gmail-and-oauth2-316fe9c790a1) - sending email with nodejs using smtp, gmail and oauth2  
+[[2]](https://developers.google.com/identity/protocols/googlescopes) - OAuth 2.0 Scopes for Google APIs  
+[[3]](https://nodemailer.com/smtp/oauth2/) - nodemailer smtp oauth2  
+[[4]](https://trello.com/c/bClKZYX9) - trello notes
 
 @weaponsforge  
 20200202
