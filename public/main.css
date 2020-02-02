@@ -1,0 +1,62 @@
+body, html {
+  margin: 0px;
+  padding: 0px;
+  font-family: Arial, Verdana, Sans-serif;
+  background-color: azure;
+}
+
+.container {
+  width: 450px;
+  min-height: 50px;
+  background-color: #ffffff;
+  border-radius: 3px;
+  box-shadow: 0 3px 20px rgba(89, 105, 129, .3), 0 1px 2px rgba(0, 0, 0, .05), 0 0 0 1px rgba(89, 105, 129, .1);
+  background-clip: content-box;
+  position: relative;
+  top: 65px;
+  z-index: 9999;
+  margin: auto;
+}
+
+form {
+  width: 410px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  margin: auto;
+  overflow: auto;
+}
+
+input, textarea, button {
+  height: 35px;
+  line-height: 35px;
+  border-radius: 4px;
+  outline: none;
+}
+
+input, textarea {
+  width: 390px;
+  border: 0.5px solid gray;
+  margin-bottom: 1.3em;
+  font-size: 14px;
+  padding-left: 8px;
+}
+
+label {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+textarea {
+  height: 300px;
+  resize: none;
+  overflow: auto;
+}
+
+button {
+  width: 150px;
+  background-color: blue;
+  border: none;
+  color: white;
+  float: right;
+  margin-right: 8px;
+}

@@ -1,0 +1,29 @@
+{
+  "name": "email-sender",
+  "version": "1.0.0",
+  "description": "Testing nodemailer for sending emails using gmail smtp.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/weaponsforge/email-sender.git"
+  },
+  "keywords": [
+    "express",
+    "nodemailer",
+    "gmail-smtp",
+    "google-service-account"
+  ],
+  "author": "weaponsforge",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/weaponsforge/email-sender/issues"
+  },
+  "homepage": "https://github.com/weaponsforge/email-sender#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
