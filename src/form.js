@@ -17,7 +17,6 @@ const Form = function() {
     setSending(true)
     console.log(`subject: ${form.subject}, message: ${form.message}`)
 
-    console.log(form)
     axios.post('/send', form)
       .then(({ data }) => {
         setSending(false)

@@ -32,7 +32,6 @@ var Form = function Form() {
     setSending(true);
     console.log('subject: ' + form.subject + ', message: ' + form.message);
 
-    console.log(form);
     axios.post('/send', form).then(function (_ref) {
       var data = _ref.data;
 
