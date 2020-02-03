@@ -1,6 +1,7 @@
 require('dotenv').config()
 const express = require('express')
-const sendEmail = require('./sendemail')
+const { sendEmailService, sendEmail } = require('./sendemail')
+const { getAuthorizeUrl, getAccessToken } = require('./oauthplayground')
 const rateLimit = require('express-rate-limit')
 const PORT = process.env.PORT || 3000
 const path = require('path')
@@ -18,7 +19,37 @@ const limiter = rateLimit({
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static(path.join(__dirname, '..', '/public')))
-app.use('/send', limiter)
+// app.use('/send', limiter)
+
+
+app.post('/authurl', (req, res) => {
+  getAuthorizeUrl()
+    .then((response) => {
+      console.log(response)
+      res.status(200).send(response)
+    })
+    .catch((error) => {
+      console.log(error)
+      res.status(400).send(error)
+    })
+})
+
+
+app.post('/accesstoken', ({
+  body: {
+    code,
+  } = req }, res) => {
+  getAccessToken(code)
+    .then((response) => {
+      console.log(response)
+      res.status(200).send(response)
+    })
+    .catch((error) => {
+      console.log(error)
+      res.status(400).send(error)
+    })
+})
+
 
 app.post('/send', async ({
   body: {
