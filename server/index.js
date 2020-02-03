@@ -6,6 +6,9 @@ const PORT = process.env.PORT || 3000
 const path = require('path')
 const app = express()
 
+// Enable if you're behind a reverse proxy
+app.set('trust proxy', 1)
+
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 3, // limit each IP to 5 requests per windowMs
