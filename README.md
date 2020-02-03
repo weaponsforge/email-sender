@@ -9,8 +9,8 @@
 	- **node**: 10.16.3
 	- **npm**: 6.9.0
 3. Gmail Account
-	- configured with OAuth2 credentials
-	- read on [**Google Gmail, SMTP and OAuth2 Setup**]() section for more information
+	- [Google Cloud Platform](https://console.cloud.google.com/) project configured with OAuth2 settings and credentials
+	- read on the [**Google Gmail, SMTP and OAuth2 Setup**](#google-gmail-smtp-and-oauth2-setup) section for more information
 
 ### Content
 
@@ -32,14 +32,14 @@
 
 4. Source out the `.env.example` file to a `.env` file. Fill in the information with *your own* Google account credentials:
 	- **EMAIL, CLIENT_USER**: your google email that you've configure for SMTP and OAuth2
-		- read on [**Google Gmail, SMTP and OAuth2 Setup**](#google-gmail-smtp-and-oauth2-setup) section for more information
+		- read on the [**Google Gmail, SMTP and OAuth2 Setup**](#google-gmail-smtp-and-oauth2-setup) section for more information
 	- **CLIENT_ID**: Google Developer Project ID associated with your email
-		- read on [**Google Gmail, SMTP and OAuth2 Setup, #3 - #4**](#google-gmail-smtp-and-oauth2-setup) section for more information on how to obtain this
+		- read on the [**Google Gmail, SMTP and OAuth2 Setup**](#google-gmail-smtp-and-oauth2-setup) section, **#3 - #4** for more information on how to obtain this
 	- **CLIENT_SECRET**: Client secret for the Google Developer Project CLIENT\_ID
 	- **REDIRECT_URL**: *https://developers.google.com/oauthplayground*
 	- **REFRESH_TOKEN**:
 		- The initial (or any) refresh token obtained from [oauthplayground](https://developers.google.com/oauthplayground)
-		- read on [**Google Gmail, SMTP and OAuth Setup2, #5**](#google-gmail-smtp-and-oauth2-setup) section for more information on how to obtain this
+		- read on [**Google Gmail, SMTP and OAuth2 Setup**](#google-gmail-smtp-and-oauth2-setup) section, **#5** for more information on how to obtain this
 
 
 ## Usage
@@ -73,7 +73,7 @@
    - Press the **+CREATE CREDENTIALS** button
    - select **OAuth client ID**
    - select **Web application**. Fill in the following:
-      - **Name**: *(any name)*
+      - **Name**: *(any name for your project)*
       - **Authorized redirect URIs**: https://developers.google.com/oauthplayground
    - press **Create**
 
