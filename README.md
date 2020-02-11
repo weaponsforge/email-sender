@@ -85,16 +85,16 @@ The following methods are the more recommended approach to generate a **refresh 
       - **Name**: *(any name for your project)*
       - **Authorized redirect URIs**: http://localhost:3000 *(or any domain of your that you own)*
       - NOTE:  
-			> It is important that you sellect **"Other"** for the type option.  
-			> This is to display the generated `access_code` on the web browser.
+		> It is important that you select **"Other"** for the type option.  
+			This is to display the generated `access_code` on the web browser.
    - press **Create**
 
 4. Save your **Client ID** and **Client Secret**. Download the JSON file that contains your full security credentials. Copy the value of the following in your **.env** file variables:
 	- **CLIENT_ID**: `client_id` value
 	- **CLIENT_SECRET**: `client_secret` value
 	- **REDIRECT_URI**: `redirect_uris` value
-		- select only the 1st from the array.
-		- Its default value is `urn:ietf:wg:oauth:2.0:oob`
+		- select only the 1st item from the array.
+		- Its default value is `urn:ietf:wg:oauth:2.0:oob` (if you chose **Other** for the type option on step **#3**)
 
 5. Refer to `/server/oauthplayground.js` for more information on the actual **googleapis** code usage and set-up.
 
@@ -162,6 +162,8 @@ The following methods generates a **refresh token** using the [https://developer
        - press the **Exchange authorization code for tokens** button
     - Copy the **Refresh Token** to your refresh token variable in the **.env** file.  
 		- **REFRESH_TOKEN**: *(generated code)*
+
+6. Start the server.
 
 
 ## References
