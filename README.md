@@ -93,8 +93,8 @@ The following methods are the more recommended approach to generate a **refresh 
 	- **CLIENT_ID**: `client_id` value
 	- **CLIENT_SECRET**: `client_secret` value
 	- **REDIRECT_URI**: `redirect_uris` value
-		- select only the 1st from the array.
-		- Its default value is `urn:ietf:wg:oauth:2.0:oob`
+		- select only the 1st item from the array.
+		- Its default value is `urn:ietf:wg:oauth:2.0:oob` (if you chose **Other** for the type option on step **#3**)
 
 5. Refer to `/server/oauthplayground.js` for more information on the actual **googleapis** code usage and set-up.
 
