@@ -84,7 +84,7 @@ The following methods are the more recommended approach to generate a **refresh 
    - select **Other** for the type option. Fill in the following:
       - **Name**: *(any name for your project)*
       - **Authorized redirect URIs**: http://localhost:3000 *(or any domain of your that you own)*
-      - NOTE:
+      - NOTE:  
 			> It is important that you sellect **"Other"** for the type option.  
 			> This is to display the generated `access_code` on the web browser.
    - press **Create**
