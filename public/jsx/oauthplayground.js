@@ -4,6 +4,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var PlayGround = function PlayGround() {
   var btnRef = React.createRef();
+  var btnRefToken = React.createRef();
+
   var authRef = React.createRef();
   var codeRef = React.createRef();
 
@@ -23,6 +25,9 @@ var PlayGround = function PlayGround() {
   React.useEffect(function () {
     var text = btnRef.current.innerText;
     btnRef.current.innerText = sending ? text + '...' : text.replace('...', '');
+
+    var textToken = btnRefToken.current.innerText;
+    btnRefToken.current.innerText = sending ? textToken + '...' : textToken.replace('...', '');
   });
 
   var updateForm = function updateForm(e) {
@@ -104,7 +109,7 @@ var PlayGround = function PlayGround() {
       React.createElement('input', { id: 'code', type: 'text', ref: codeRef, onChange: updateForm, placeholder: 'Enter Code Here' }),
       React.createElement(
         'button',
-        { ref: btnRef, onClick: getAccessToken },
+        { ref: btnRefToken, onClick: getAccessToken },
         'Get Access Token'
       )
     )

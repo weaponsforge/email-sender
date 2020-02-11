@@ -34,12 +34,14 @@
 `npm install`
 
 4. Source out the `.env.example` file to a `.env` file. Fill in the information with *your own* Google account credentials:
-	- **EMAIL, CLIENT_USER**: your google email that you've configure for SMTP and OAuth2
-		- read on the [**Google Gmail, SMTP and OAuth2 Setup**](#google-gmail-smtp-and-oauth2-setup) section for more information
+	- **EMAIL, CLIENT_USER**: your google email that you've configured for SMTP and OAuth2
+		- read on the [**Using a Local OAuth 2.0 Generator**](#using-a-local-oauth-20-generator) section for more information
 	- **CLIENT_ID**: Google Developer Project ID associated with your email
-		- read on the [**Google Gmail, SMTP and OAuth2 Setup**](#google-gmail-smtp-and-oauth2-setup) section, **#3 - #4** for more information on how to obtain this
+		- read on the [**Using a Local OAuth 2.0 Generator**](#using-a-local-oauth-20-generator) section, **#3 - #4** for more information on how to obtain this
 	- **CLIENT_SECRET**: Client secret for the Google Developer Project CLIENT\_ID
-	- **REDIRECT_URL**: *https://developers.google.com/oauthplayground*
+	- **REDIRECT_URI**: depending on your OAUth 2.0 setup, proceed to write as follows:
+		- [**Using a Local OAuth 2.0 Generator**](#using-a-local-oauth-20-generator): urn:ietf:wg:oauth:2.0:oob
+		- [**Using the OAuth 2.0 Playground**](#using-the-oauth-20-playground): *https://developers.google.com/oauthplayground*
 	- **REFRESH_TOKEN**:
 		- The initial (or any) refresh token obtained from [oauthplayground](https://developers.google.com/oauthplayground) or the [local oauth 2.0 generator](#using-a-local-oauth-20-generator)
 		- read on [**Using a Local OAuth 2.0 Generator**](#using-a-local-oauth-20-generator) section, **#7** for more information on the how to obtain this. 
@@ -82,31 +84,41 @@ The following methods are the more recommended approach to generate a **refresh 
    - select **Other** for the type option. Fill in the following:
       - **Name**: *(any name for your project)*
       - **Authorized redirect URIs**: http://localhost:3000 *(or any domain of your that you own)*
+      - NOTE:
+			> It is important that you sellect **"Other"** for the type option.  
+			> This is to display the generated `access_code` on the web browser.
    - press **Create**
 
-4. Save your **Client ID** and **Client Secret**. Download the JSON file that contains your full security credentials.
+4. Save your **Client ID** and **Client Secret**. Download the JSON file that contains your full security credentials. Copy the value of the following in your **.env** file variables:
+	- **CLIENT_ID**: `client_id` value
+	- **CLIENT_SECRET**: `client_secret` value
+	- **REDIRECT_URI**: `redirect_uris` value
+		- select only the 1st from the array.
+		- Its default value is `urn:ietf:wg:oauth:2.0:oob`
 
 5. Refer to `/server/oauthplayground.js` for more information on the actual **googleapis** code usage and set-up.
-	- Copy and paste the content of your JSON file credentials under the line with:  
-`// Paste your OAuth 2.0 Client ID "credentials.json" file's content here`
 
 6. Start the local server.  
 `npm run start`
 
-7. Configure **OAuth**. Get the refresh token.
-	- Load `http://localhost:3000/oauthplayground`
+7. Load the local OAuth 2.0 generator.  
+`http://localhost:3000/oauthplayground`
+
+8. Configure **OAuth**. Get the refresh token from the local OAuth 2.0 generator.
 	- Press the **Get Auth URL button**.
 		- Launch the generated URL to another browser tab
 		- Login your gmail account
 		- You will be taken to a page that says "This app isn't verified"
 		- press the **Advanced** link on the bottom left
-      - press the link **Go to Your App’s Name (unsafe)**
-      - A pop-up box that says "Grant App Name permission" will appear
-         - select **Allow**
-         - Copy and paste the `code` that will be displayed back to `http://localhost:3000/oauthplayground's` **code** field that says "Enter code here".
-       - Press the 	**Get Access Token** button.
-     - Copy the `refresh_token` that will be displayed in the Chrom dev console to your **.env** variable.
+		- press the link **Go to Your App’s Name (unsafe)**
+			- A pop-up box that says "Grant App Name permission" will appear
+			- select **Allow**
+			- Copy and paste the `code` that will be displayed back to `http://localhost:3000/oauthplayground's` **code** field that says "Enter code here".
+			- Press the **Get Access Token** button.
+    - Copy the generated code that will be displayed in the code input field to your refresh token variable in the **.env** file.  
+		- **REFRESH_TOKEN**: *(generated code)*
 
+9. Restart the local server.
 
 
 ## Using the OAuth 2.0 Playground
@@ -148,7 +160,8 @@ The following methods generates a **refresh token** using the [https://developer
          - you will be taken back to the OAuth page
     - Go to "Step 2: Exchange authorization code for tokens" from the side bar
        - press the **Exchange authorization code for tokens** button
-    - Copy the **Refresh Token**
+    - Copy the **Refresh Token** to your refresh token variable in the **.env** file.  
+		- **REFRESH_TOKEN**: *(generated code)*
 
 
 ## References

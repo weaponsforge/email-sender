@@ -1,5 +1,7 @@
 const PlayGround = function() {
   const btnRef = React.createRef()
+  const btnRefToken = React.createRef()
+
   const authRef = React.createRef()
   const codeRef = React.createRef()
   const [sending, setSending] = React.useState(false)
@@ -11,6 +13,9 @@ const PlayGround = function() {
   React.useEffect(() => {
     let text = btnRef.current.innerText
     btnRef.current.innerText = (sending) ? `${text}...` : text.replace('...', '')
+
+    let textToken = btnRefToken.current.innerText
+    btnRefToken.current.innerText = (sending) ? `${textToken}...` : textToken.replace('...', '')
   })
 
   const updateForm = (e) => {
@@ -66,7 +71,7 @@ const PlayGround = function() {
         {/** From field */}
         <label>Code</label>
         <input id="code" type="text" ref={codeRef} onChange={updateForm} placeholder="Enter Code Here" />      
-        <button ref={btnRef} onClick={getAccessToken}>Get Access Token</button>
+        <button ref={btnRefToken} onClick={getAccessToken}>Get Access Token</button>
       </div>
     </form>    
   )
