@@ -1,0 +1,11 @@
+.container {
+  width: 700px;
+}
+
+form {
+  width: 660px;
+}
+
+input, textarea {
+  width: 640px;
+}

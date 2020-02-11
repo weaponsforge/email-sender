@@ -10,24 +10,6 @@ const oauth2Client = new OAuth2(
 
 oauth2Client.setCredentials({ refresh_token: process.env.REFRESH_TOKEN })
 
-/**
- * Get access Token using a Google Service Account
- */
-const authorize = async () => {
-  // Load scopes
-  const scopes = 'https://www.googleapis.com/auth/gmail.send'
-
-  return new Promise((resolve) => {
-    const jwt = new google.auth.JWT(process.env.GA_CLIENT_EMAIL, null, process.env.GA_PRIVATE_KEY, scopes)
-    jwt.authorize((err, response) => {
-      if (err) {
-        resolve(false)
-      }
-      resolve(response.access_token)
-    })
-  })
-}
-
 
 /**
  * Send email using gmail OAuth
