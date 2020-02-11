@@ -11,15 +11,15 @@
 	- **npm**: 6.9.0
 3. Gmail Account
 	- [Google Cloud Platform](https://console.cloud.google.com/) project configured with OAuth2 settings and credentials
-	- read on the [**Google Gmail, SMTP and OAuth2 Setup**]() sections for more information
+	- read on the [**Google Gmail, SMTP and OAuth2 Setup**](#using-a-local-oauth-20-generator) sections for more information
 
 ### Content
 
 - [**Installation**](#installation)
 - [**Usage**](#usage)
 - **Google Gmail, SMTP and OAuth2 Setup**
-	- [**Using a Local OAuth 2.0 Generator**]()
-	- [**Using the OAuth 2.0 Playground**]()
+	- [**Using a Local OAuth 2.0 Generator**](#using-a-local-oauth-20-generator)
+	- [**Using the OAuth 2.0 Playground**](#using-the-oauth-20-playground)
 - [**References**](#references)
 
 
@@ -41,9 +41,9 @@
 	- **CLIENT_SECRET**: Client secret for the Google Developer Project CLIENT\_ID
 	- **REDIRECT_URL**: *https://developers.google.com/oauthplayground*
 	- **REFRESH_TOKEN**:
-		- The initial (or any) refresh token obtained from [oauthplayground](https://developers.google.com/oauthplayground) or the [local oauth 2.0 generator]()
-		- read on [**Using a Local OAuth 2.0 Generator**]() section, **#7** for more information on the how to obtain this. 
-			> Take note that  [**Using a Local OAuth 2.0 Generator**]() is the more recommended approach to obtain a refresh token, but you may also try [**Using the OAuth 2.0 Playground**]().
+		- The initial (or any) refresh token obtained from [oauthplayground](https://developers.google.com/oauthplayground) or the [local oauth 2.0 generator](#using-a-local-oauth-20-generator)
+		- read on [**Using a Local OAuth 2.0 Generator**](#using-a-local-oauth-20-generator) section, **#7** for more information on the how to obtain this. 
+			> Take note that  [**Using a Local OAuth 2.0 Generator**](#using-a-local-oauth-20-generator) is the more recommended approach to obtain a refresh token, but you may also try [**Using the OAuth 2.0 Playground**](#using-the-oauth-20-playground).
 
 
 ## Usage
@@ -66,7 +66,7 @@
 
 ## Using a Local OAuth 2.0 Generator
 
-The following methods are the more recommended approach to generate a **refresh token** since its steps are reproducible from your own server. You may also check out the previous-endorsed methods on [**Using the OAuth 2.0 Playground**]().
+The following methods are the more recommended approach to generate a **refresh token** since its steps are reproducible from your own server. You may also check out the previous-endorsed methods on [**Using the OAuth 2.0 Playground**](#using-the-oauth-20-playground).
 
 1. Create Project from the [Google Developer Console](https://console.cloud.google.com/). Use any project name.
 
