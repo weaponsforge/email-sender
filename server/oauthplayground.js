@@ -1,19 +1,19 @@
-const googleAuth = require('google-auth-library')
+const { google } = require('googleapis');
 const scope = 'https://mail.google.com/'
 
 // EmailerNotifications Project
 const credentials = {
-  "web": {
+  "installed": {
     // Paste your OAuth 2.0 Client ID "credentials.json" file's content here
   },
 }
 
 
 // Initialize the OAuth2 client with your credentials
-const oauth2Client = new googleAuth.OAuth2Client(
-  credentials.web.client_id, 
-  credentials.web.client_secret, 
-  credentials.web.redirect_uris[0])
+const oauth2Client = new google.auth.OAuth2(
+  credentials.installed.client_id,
+  credentials.installed.client_secret,
+  credentials.installed.redirect_uris[0])
 
 
 /**
@@ -50,5 +50,4 @@ const getAccessToken = (code) => {
 module.exports = {
   getAuthorizeUrl,
   getAccessToken,
-  oauthSetup,
 }
