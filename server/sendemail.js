@@ -56,4 +56,4 @@ const sendEmail = async (data, next) => {
   transporter.sendMail(newData, next)
 }
 
-module.exports = sendEmail
+module.exports = { sendEmail }
