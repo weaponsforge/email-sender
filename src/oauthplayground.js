@@ -1,6 +1,7 @@
 const PlayGround = function() {
   const btnRef = React.createRef()
   const authRef = React.createRef()
+  const codeRef = React.createRef()
   const [sending, setSending] = React.useState(false)
   const [form, setForm] = React.useState({
     authurl: '',
@@ -29,18 +30,24 @@ const PlayGround = function() {
       })
       .catch((error) => {
         setSending(false)
+        authfield.value = error.response.data
       })
   }
 
   const getAccessToken = () => {
-    console.log(form.code)
+    const codefield = codeRef.current
+    setSending(true)
+
     axios.post('/accesstoken', { code: form.code })
       .then(({ data }) => {
+        setSending(false)
         const { access_token, scope, token_type, expiry_date } = data
+        codefield.value = access_token
         console.log(data)
       })
       .catch((error) => {
-        console.log(error)
+        setSending(false)
+        codefield.value = error.response.data
       })
   }
 
@@ -58,7 +65,7 @@ const PlayGround = function() {
       <div>
         {/** From field */}
         <label>Code</label>
-        <input id="code" type="text" onChange={updateForm} placeholder="Enter Code Here" />      
+        <input id="code" type="text" ref={codeRef} onChange={updateForm} placeholder="Enter Code Here" />      
         <button ref={btnRef} onClick={getAccessToken}>Get Access Token</button>
       </div>
     </form>    

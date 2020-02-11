@@ -30,7 +30,7 @@ app.post('/authurl', (req, res) => {
     })
     .catch((error) => {
       console.log(error)
-      res.status(400).send(error)
+      res.status(400).send(error.message)
     })
 })
 
@@ -38,15 +38,13 @@ app.post('/authurl', (req, res) => {
 app.post('/accesstoken', ({
   body: {
     code,
-  } = req }, res) => {
-  getAccessToken(code)
+  } = req }, res, next) => {
+  getAccessToken(code, next)
     .then((response) => {
-      console.log(response)
       res.status(200).send(response)
     })
     .catch((error) => {
-      console.log(error)
-      res.status(400).send(error)
+      res.status(400).send(error.message)
     })
 })
 

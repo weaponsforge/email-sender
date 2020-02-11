@@ -5,6 +5,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var PlayGround = function PlayGround() {
   var btnRef = React.createRef();
   var authRef = React.createRef();
+  var codeRef = React.createRef();
 
   var _React$useState = React.useState(false),
       _React$useState2 = _slicedToArray(_React$useState, 2),
@@ -44,21 +45,28 @@ var PlayGround = function PlayGround() {
       authfield.value = data;
     }).catch(function (error) {
       setSending(false);
+      authfield.value = error.response.data;
     });
   };
 
   var getAccessToken = function getAccessToken() {
-    console.log(form.code);
+    var codefield = codeRef.current;
+    setSending(true);
+
     axios.post('/accesstoken', { code: form.code }).then(function (_ref2) {
       var data = _ref2.data;
+
+      setSending(false);
       var access_token = data.access_token,
           scope = data.scope,
           token_type = data.token_type,
           expiry_date = data.expiry_date;
 
+      codefield.value = access_token;
       console.log(data);
     }).catch(function (error) {
-      console.log(error);
+      setSending(false);
+      codefield.value = error.response.data;
     });
   };
 
@@ -93,7 +101,7 @@ var PlayGround = function PlayGround() {
         null,
         'Code'
       ),
-      React.createElement('input', { id: 'code', type: 'text', onChange: updateForm, placeholder: 'Enter Code Here' }),
+      React.createElement('input', { id: 'code', type: 'text', ref: codeRef, onChange: updateForm, placeholder: 'Enter Code Here' }),
       React.createElement(
         'button',
         { ref: btnRef, onClick: getAccessToken },

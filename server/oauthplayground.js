@@ -28,12 +28,18 @@ const oauth2Client = new google.auth.OAuth2(
  * @returns {String} authorization url
  */
 const getAuthorizeUrl = async () => {
-  const authUrl = await oauth2Client.generateAuthUrl({
-    access_type: 'offline',
-    scope,
-  })
+  if (process.env.NODE_ENV === 'production') {
+    return new Promise(() => {
+      throw new Error('Access Token will not be generated on production.')
+    })
+  } else {
+    const authUrl = await oauth2Client.generateAuthUrl({
+      access_type: 'offline',
+      scope,
+    })
 
-  return authUrl
+    return authUrl
+  }
 }
 
 
@@ -43,15 +49,22 @@ const getAuthorizeUrl = async () => {
  * @param {String} code Code param obtained from the url returned by accessing 
  *    the authorization url and allowing your app to access your account
  */
-const getAccessToken = (code) => {
-  return new Promise((resolve) => {
-    oauth2Client.getToken(code, (err, token) => {
-      if (err) {
-        resolve(err)
-      }
-      resolve(token)
+const getAccessToken = async (code) => {
+  if (process.env.NODE_ENV === 'production') {
+    return new Promise(() => {
+      throw new Error('Access Token will not be generated on production.')
     })
-  })
+  } else {
+    return new Promise((resolve, reject) => {
+      oauth2Client.getToken(code, (err, token) => {
+        if (err) {
+          reject(err)
+        } else {
+          resolve(token)
+        }
+      })
+    })
+  }
 }
 
 module.exports = {
