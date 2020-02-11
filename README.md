@@ -86,7 +86,7 @@ The following methods are the more recommended approach to generate a **refresh 
       - **Authorized redirect URIs**: http://localhost:3000 *(or any domain of your that you own)*
       - NOTE:  
 			> It is important that you sellect **"Other"** for the type option.  
-			> This is to display the generated `access_code` on the web browser.
+			This is to display the generated `access_code` on the web browser.
    - press **Create**
 
 4. Save your **Client ID** and **Client Secret**. Download the JSON file that contains your full security credentials. Copy the value of the following in your **.env** file variables:
