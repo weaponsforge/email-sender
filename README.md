@@ -85,7 +85,7 @@ The following methods are the more recommended approach to generate a **refresh 
       - **Name**: *(any name for your project)*
       - **Authorized redirect URIs**: http://localhost:3000 *(or any domain of your that you own)*
       - NOTE:  
-		> It is important that you sellect **"Other"** for the type option.  
+		> It is important that you select **"Other"** for the type option.  
 			This is to display the generated `access_code` on the web browser.
    - press **Create**
 
@@ -162,6 +162,8 @@ The following methods generates a **refresh token** using the [https://developer
        - press the **Exchange authorization code for tokens** button
     - Copy the **Refresh Token** to your refresh token variable in the **.env** file.  
 		- **REFRESH_TOKEN**: *(generated code)*
+
+6. Start the server.
 
 
 ## References
