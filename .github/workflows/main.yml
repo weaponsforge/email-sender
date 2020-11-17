@@ -27,3 +27,4 @@ jobs:
           EOF
       - run: heroku git:remote -a $HEROKU_APP
       - run: git push heroku HEAD:refs/heads/master
+      - run: heroku dyno:restart -a $HEROKU_APP
