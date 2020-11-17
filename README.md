@@ -81,12 +81,18 @@ The following methods are the more recommended approach to generate a **refresh 
 3. Press **Credentials** tab in the sidebar
    - Press the **+CREATE CREDENTIALS** button
    - select **OAuth client ID**
-   - select **Other** for the type option. Fill in the following:
+   - select **Desktop app** for the type option. (This is named as "**Other** in the past). Fill in the following:
       - **Name**: *(any name for your project)*
-      - **Authorized redirect URIs**: http://localhost:3000 *(or any domain of your that you own)*
+      - **Authorized redirect URIs**: `urn:ietf:wg:oauth:2.0:oob`
       - NOTE:  
-		> It is important that you select **"Other"** for the type option.  
-			This is to display the generated `access_code` on the web browser.
+			> It is important that you select **"Desktop app"** for the type option.  
+			This is to display the generated `access_code` on the web browser for step **#8**..
+   - (OPTIONAL) select **Web Client** for the type option, instead of **Desktop app**. This is to ensure more security that the tokens exchange will only be used from your specified domain. Fill in the following:
+      - **Name**: *(any name for your project)*
+      - **Authorized redirect URIs**: `http://localhost:3000` *(or any domain that you own)*
+      - NOTE:  
+			> It is important that you select **"Web Client"** for the type option.  
+			However, the `access_code` will not be displayed on the web browser on the proceeding step **#8**.. Watch out for the value of the GET parameter name `code=...` on the url instead.
    - press **Create**
 
 4. Save your **Client ID** and **Client Secret**. Download the JSON file that contains your full security credentials. Copy the value of the following in your **.env** file variables:
@@ -94,7 +100,7 @@ The following methods are the more recommended approach to generate a **refresh 
 	- **CLIENT_SECRET**: `client_secret` value
 	- **REDIRECT_URI**: `redirect_uris` value
 		- select only the 1st item from the array.
-		- Its default value is `urn:ietf:wg:oauth:2.0:oob` (if you chose **Other** for the type option on step **#3**)
+		- Its default value is `urn:ietf:wg:oauth:2.0:oob` (if you chose **Desktop app** for the type option on step **#3**)
 
 5. Refer to `/server/oauthplayground.js` for more information on the actual **googleapis** code usage and set-up.
 
