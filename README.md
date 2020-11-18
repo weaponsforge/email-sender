@@ -72,7 +72,7 @@ The following methods are the more recommended approach to generate a **refresh 
 
 1. Create Project from the [Google Developer Console](https://console.cloud.google.com/). Use any project name.
 
-2. Configure the **OAuth Consent Screen**
+2. Configure the **OAuth Consent Screen**. (This can be found under **APIs and Services** side tab, or the **APIs** section on the project dahsboard.
    - press the **Configure consent screen** button
    - do not select anything for **User Type**
    - Enter a value for **Application name**
@@ -83,16 +83,16 @@ The following methods are the more recommended approach to generate a **refresh 
    - select **OAuth client ID**
    - select **Desktop app** for the type option. (This is named as "**Other** in the past). Fill in the following:
       - **Name**: *(any name for your project)*
-      - **Authorized redirect URIs**: `urn:ietf:wg:oauth:2.0:oob`
+      - **Authorized redirect URIs**: `http://localhost:3000` *(or the server where you will run the local oauth 2.0 generator)*
       - NOTE:  
 			> It is important that you select **"Desktop app"** for the type option.  
-			This is to display the generated `access_code` on the web browser for step **#8**..
+			This is to display the generated `access_code` on the web browser for step **#8**.
    - (OPTIONAL) select **Web Client** for the type option, instead of **Desktop app**. This is to ensure more security that the tokens exchange will only be used from your specified domain. Fill in the following:
       - **Name**: *(any name for your project)*
-      - **Authorized redirect URIs**: `http://localhost:3000` *(or any domain that you own)*
+      - **Authorized redirect URIs**: `http://localhost:3000` *(or the server where you will run the local oauth 2.0 generator)*
       - NOTE:  
 			> It is important that you select **"Web Client"** for the type option.  
-			However, the `access_code` will not be displayed on the web browser on the proceeding step **#8**.. Watch out for the value of the GET parameter name `code=...` on the url instead.
+			However, the `access_code` will not be displayed on the web browser on the proceeding step **#8**. Watch out for the value of the GET url parameter `code=<some_value>` from the url instead.
    - press **Create**
 
 4. Save your **Client ID** and **Client Secret**. Download the JSON file that contains your full security credentials. Copy the value of the following in your **.env** file variables:
@@ -133,7 +133,7 @@ The following methods generates a **refresh token** using the [https://developer
 
 1. Create Project from the [Google Developer Console](https://console.cloud.google.com/). Use any project name.
 
-2. Configure the **OAuth Consent Screen**
+2. Configure the **OAuth Consent Screen**. (This can be found under **APIs and Services** side tab, or the **APIs** section on the project dahsboard.
    - press the **Configure consent screen** button
    - do not select anything for **User Type**
    - Enter a value for **Application name**
@@ -144,7 +144,7 @@ The following methods generates a **refresh token** using the [https://developer
    - select **OAuth client ID**
    - select **Web application**. Fill in the following:
       - **Name**: *(any name for your project)*
-      - **Authorized redirect URIs**: https://developers.google.com/oauthplayground
+      - **Authorized redirect URIs**: `https://developers.google.com/oauthplayground`
    - press **Create**
 
 4. Save your **Client ID** and **Client Secret**.
@@ -174,12 +174,12 @@ The following methods generates a **refresh token** using the [https://developer
 
 ## References
 
-[[1]](https://medium.com/@nickroach_50526/sending-emails-with-node-js-using-smtp-gmail-and-oauth2-316fe9c790a1) - sending email with nodejs using smtp, gmail and oauth2  
-[[2]](https://designdigitalsolutions.com/sending-mail-via-nodemailer-using-your-gmail-with-oauth2/) - Oauth 2.0 setup on localhost   
-[[3]](https://developers.google.com/identity/protocols/googlescopes) - OAuth 2.0 Scopes for Google APIs  
-[[4]](https://myaccount.google.com/permissions) - google account app permissions   
-[[5]](https://nodemailer.com/smtp/oauth2/) - nodemailer smtp oauth2  
-[[6]](https://trello.com/c/bClKZYX9) - trello notes
+[[1]](https://medium.com/@nickroach_50526/sending-emails-with-node-js-using-smtp-gmail-and-oauth2-316fe9c790a1), [[2]](https://designdigitalsolutions.com/sending-mail-via-nodemailer-using-your-gmail-with-oauth2/) - sending email with nodejs using smtp, gmail and oauth2  
+[[3]](https://designdigitalsolutions.com/sending-mail-via-nodemailer-using-your-gmail-with-oauth2/) - Oauth 2.0 setup on localhost  
+[[4]](https://developers.google.com/identity/protocols/googlescopes) - OAuth 2.0 Scopes for Google APIs  
+[[5]](https://myaccount.google.com/permissions) - google account app permissions  
+[[6]](https://nodemailer.com/smtp/oauth2/) - nodemailer smtp oauth2  
+[[7]](https://trello.com/c/bClKZYX9) - trello notes
 
 @weaponsforge  
 20200202
