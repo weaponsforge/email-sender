@@ -30,7 +30,7 @@
     "express": "^4.17.1",
     "express-rate-limit": "^5.0.0",
     "googleapis": "^47.0.0",
-    "nodemailer": "^6.4.2"
+    "nodemailer": "^6.4.16"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
