@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node server/index.js",
-    "build": "npx babel src --out-dir ./public/jsx --presets react-app/prod",
-    "watch": "npx babel --watch src --out-dir ./public/jsx --presets react-app/prod",
+    "build": "npx babel src --out-dir ./public/jsx --presets @babel/preset-react",
+    "watch": "npx babel --watch src --out-dir ./public/jsx --presets @babel/preset-react",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -33,7 +33,9 @@
     "nodemailer": "^6.4.16"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-react-app": "^3.1.2"
+    "@babel/cli": "^7.14.8",
+    "@babel/core": "^7.15.0",
+    "@babel/preset-env": "^7.15.0",
+    "@babel/preset-react": "^7.14.5"
   }
 }
