@@ -26,16 +26,16 @@
   },
   "homepage": "https://github.com/weaponsforge/email-sender#readme",
   "dependencies": {
-    "dotenv": "^10.0.0",
-    "express": "^4.17.1",
-    "express-rate-limit": "^5.3.0",
-    "googleapis": "^84.0.0",
-    "nodemailer": "^6.6.3"
+    "dotenv": "^16.0.0",
+    "express": "^4.18.1",
+    "express-rate-limit": "^6.4.0",
+    "googleapis": "^100.0.0",
+    "nodemailer": "^6.7.4"
   },
   "devDependencies": {
-    "@babel/cli": "^7.14.8",
-    "@babel/core": "^7.15.0",
-    "@babel/preset-env": "^7.15.0",
-    "@babel/preset-react": "^7.14.5"
+    "@babel/cli": "^7.17.10",
+    "@babel/core": "^7.17.10",
+    "@babel/preset-env": "^7.17.10",
+    "@babel/preset-react": "^7.16.7"
   }
 }
